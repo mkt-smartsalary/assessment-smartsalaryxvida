@@ -3,71 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HR Readiness Assessment — Smart Salary × VIDA</title>
-
-<!-- ============================================================
-     FONTS (brand: Poppins + Pretendard)
-     ============================================================ -->
+<title>HR OS Assessment — Smart Salary × VIDA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-
 <style>
-/* ============================================================
-   BRAND TOKENS
-   ============================================================ */
 :root{
-  --green:#28b86a;
-  --green-d:#1f9c59;
-  --blue:#3c4ea2;
-  --grey:#5c616a;
-  --charcoal:#0e1822;
-  --light:#bfbfbf;
-
-  --bg:#f6f8f7;
-  --surface:#ffffff;
-  --line:#e7ebe9;
+  --green:#28b86a;--green-d:#1f9c59;--blue:#3c4ea2;--grey:#5c616a;--charcoal:#0e1822;--light:#bfbfbf;
+  --bg:#f6f8f7;--surface:#ffffff;--line:#e7ebe9;
   --shadow:0 1px 2px rgba(14,24,34,.04), 0 12px 32px rgba(14,24,34,.06);
-
-  --display:"Poppins",sans-serif;
-  --body:"Pretendard","Poppins",-apple-system,sans-serif;
+  --display:"Poppins",sans-serif;--body:"Pretendard","Poppins",-apple-system,sans-serif;
+  --red:#e5484d;--amber:#e5a00d;--teal:#12a594;--indigo:#3e63dd;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{
-  font-family:var(--body);
-  color:var(--charcoal);
-  background:
-    radial-gradient(1200px 600px at 85% -10%, rgba(40,184,106,.10), transparent 60%),
-    radial-gradient(1000px 500px at -10% 110%, rgba(60,78,162,.08), transparent 55%),
-    var(--bg);
-  -webkit-font-smoothing:antialiased;
-  line-height:1.55;
-}
-
+body{font-family:var(--body);color:var(--charcoal);background:radial-gradient(1200px 600px at 85% -10%,rgba(40,184,106,.10),transparent 60%),radial-gradient(1000px 500px at -10% 110%,rgba(60,78,162,.08),transparent 55%),var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55}
 .wrap{max-width:680px;margin:0 auto;padding:24px 20px 64px;min-height:100%}
-
-/* ---- header / logo ---- */
 .brand{display:flex;align-items:center;gap:14px;padding:8px 0 26px;flex-wrap:wrap}
 .brand img{width:auto;display:block}
 .brand .x{color:var(--light);font-size:17px;font-weight:300}
-
-/* ---- cards / screens ---- */
 .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:32px}
-.screen{display:none;animation:rise .4s ease both}
-.screen.active{display:block}
+.screen{display:none;animation:rise .4s ease both}.screen.active{display:block}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
 .eyebrow{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
-h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+h1{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
 .lead{color:var(--grey);font-size:15px;max-width:46ch}
 .meta{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 28px}
 .chip{font-size:12.5px;font-weight:500;color:var(--grey);background:#f1f4f3;border:1px solid var(--line);padding:6px 12px;border-radius:99px}
-
-/* ---- buttons ---- */
-.btn{font-family:var(--display);font-weight:600;font-size:15px;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;transition:transform .15s, box-shadow .15s, background .15s;display:inline-flex;align-items:center;gap:8px}
+.btn{font-family:var(--display);font-weight:600;font-size:15px;border:none;border-radius:12px;padding:14px 22px;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s;display:inline-flex;align-items:center;gap:8px}
 .btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(40,184,106,.30)}
 .btn-primary:hover{background:var(--green-d);transform:translateY(-1px)}
 .btn-primary:disabled{background:var(--light);box-shadow:none;cursor:not-allowed;transform:none}
@@ -75,55 +39,64 @@ h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;le
 .btn-ghost:hover{color:var(--charcoal)}
 .btn-block{width:100%;justify-content:center}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
-
-/* ---- progress ---- */
 .prog{height:6px;background:#eef1f0;border-radius:99px;overflow:hidden;margin-bottom:8px}
 .prog>i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .35s ease}
 .qcount{font-size:12.5px;color:var(--light);font-weight:500;font-family:var(--display);margin-bottom:22px;display:block}
-.qtext{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3;letter-spacing:-.01em;margin-bottom:22px}
-
-/* ---- options ---- */
-.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fbfcfc;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:border-color .15s, background .15s, transform .12s;font-size:15px;color:var(--charcoal);font-family:var(--body)}
+.qtext{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.3;letter-spacing:-.01em;margin-bottom:22px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#fbfcfc;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:border-color .15s,background .15s,transform .12s;font-size:14.5px;color:var(--charcoal);font-family:var(--body);line-height:1.4}
 .opt:hover{border-color:var(--green);background:#fff;transform:translateX(2px)}
 .opt .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--light);display:grid;place-items:center;transition:all .15s}
 .opt.sel{border-color:var(--green);background:rgba(40,184,106,.06)}
 .opt.sel .dot{border-color:var(--green);background:var(--green)}
 .opt.sel .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
-
-/* ---- form ---- */
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--grey);margin-bottom:7px;font-family:var(--display)}
 .field .req{color:var(--green)}
 .field input,.field select{width:100%;font-family:var(--body);font-size:15px;color:var(--charcoal);background:#fbfcfc;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;transition:border-color .15s}
 .field input:focus,.field select:focus{outline:none;border-color:var(--green);background:#fff}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.consent{display:flex;gap:11px;align-items:flex-start;margin:6px 0 4px;font-size:13px;color:var(--grey);line-height:1.45}
-.consent input{margin-top:2px;width:18px;height:18px;accent-color:var(--green);flex:0 0 auto}
 .field input.err,.field select.err{border-color:#e5484d;background:#fff6f6}
 .errmsg{color:#e5484d;font-size:13px;margin:2px 0 0;font-family:var(--display);font-weight:500;display:none}
 .errmsg.show{display:block}
+.consent{display:flex;gap:11px;align-items:flex-start;margin:6px 0 4px;font-size:13px;color:var(--grey);line-height:1.45}
 .consent.err span{color:#e5484d}
+.consent input{margin-top:2px;width:18px;height:18px;accent-color:var(--green);flex:0 0 auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-/* ---- result ---- */
-.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--green);padding:7px 13px;border-radius:99px;margin-bottom:16px}
-.profile-name{font-family:var(--display);font-weight:700;font-size:32px;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
-.profile-head{font-size:16px;color:var(--charcoal);font-weight:500;margin-bottom:6px}
-.profile-desc{font-size:14.5px;color:var(--grey);margin-bottom:28px}
+/* ---- RESULT: Brief Readout ---- */
+.version-badge{display:inline-block;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;padding:8px 16px;border-radius:99px;margin-bottom:14px}
+.version-name{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px}
+.version-score{font-family:var(--display);font-weight:600;font-size:16px;color:var(--grey);margin-bottom:8px}
+.version-desc{font-size:15px;color:var(--charcoal);margin-bottom:28px;line-height:1.55}
 
-.bars{margin:4px 0 30px}
-.bar{margin-bottom:18px}
-.bar .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600;font-family:var(--display);margin-bottom:7px}
-.bar .top span:last-child{color:var(--grey)}
-.bar .track{height:9px;background:#eef1f0;border-radius:99px;overflow:hidden}
-.bar .fill{height:100%;width:0;border-radius:99px;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.layers{margin-bottom:28px}
+.layer{margin-bottom:18px}
+.layer .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.layer .lname{font-size:13px;font-weight:600;font-family:var(--display);color:var(--charcoal)}
+.layer .lstatus{font-size:11.5px;font-weight:600;font-family:var(--display);letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:6px}
+.layer .track{height:9px;background:#eef1f0;border-radius:99px;overflow:hidden}
+.layer .fill{height:100%;width:0;border-radius:99px;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.layer .lscore{font-size:12px;color:var(--grey);font-family:var(--display);font-weight:500;margin-top:4px}
 
-.gate{background:linear-gradient(135deg, rgba(40,184,106,.07), rgba(60,78,162,.07));border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}
-.gate h3{font-family:var(--display);font-weight:700;font-size:18px;margin-bottom:8px}
-.gate p{font-size:13.5px;color:var(--grey);max-width:42ch;margin:0 auto 18px}
-.lock{font-size:12px;color:var(--light);margin-top:14px;font-family:var(--display);font-weight:500}
+.weakest{background:rgba(229,72,77,.06);border:1px solid rgba(229,72,77,.2);border-radius:14px;padding:18px;margin-bottom:28px}
+.weakest h3{font-family:var(--display);font-weight:700;font-size:15px;color:var(--red);margin-bottom:6px}
+.weakest p{font-size:14px;color:var(--charcoal);line-height:1.5}
+
+.preview{background:linear-gradient(135deg,rgba(40,184,106,.06),rgba(60,78,162,.06));border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:28px}
+.preview h3{font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:14px;text-align:center}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.preview-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.preview-item .pi-icon{font-size:20px;margin-bottom:6px}
+.preview-item .pi-title{font-family:var(--display);font-weight:600;font-size:13px;margin-bottom:4px}
+.preview-item .pi-desc{font-size:12px;color:var(--grey);line-height:1.4}
+
+.gate{background:var(--charcoal);border-radius:16px;padding:26px;text-align:center}
+.gate h3{font-family:var(--display);font-weight:700;font-size:18px;color:#fff;margin-bottom:8px}
+.gate p{font-size:13.5px;color:rgba(255,255,255,.7);max-width:42ch;margin:0 auto 18px}
+.gate .btn-primary{box-shadow:0 6px 18px rgba(40,184,106,.40)}
+.lock{font-size:12px;color:rgba(255,255,255,.4);margin-top:14px;font-family:var(--display);font-weight:500}
 
 .foot{text-align:center;color:var(--light);font-size:12px;margin-top:28px;font-family:var(--display);font-weight:500}
-@media(max-width:520px){h1{font-size:25px}.card{padding:24px}.grid2{grid-template-columns:1fr}.profile-name{font-size:27px}}
+@media(max-width:520px){h1{font-size:24px}.card{padding:24px}.grid2{grid-template-columns:1fr}.version-name{font-size:28px}.preview-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -135,23 +108,24 @@ h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;le
     <img src="data:image/png;base64,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" alt="VIDA" style="height:22px">
   </div>
 
-  <!-- ============ SCREEN: INTRO ============ -->
+  <!-- ============ INTRO ============ -->
   <section class="screen active card" id="s-intro">
-    <div class="eyebrow">HR Readiness Assessment</div>
-    <h1>Seberapa siap HR-mu menghadapi era digital &amp; AI?</h1>
-    <p class="lead">9 pertanyaan singkat memetakan kematangan HR-mu di tiga dimensi: sistem HRIS, kesiapan AI, dan keamanan &amp; e-signature. Jawab sejujurnya — makin akurat, makin tajam hasilnya.</p>
+    <div class="eyebrow">HR OS Assessment</div>
+    <h1>Seberapa kuat "sistem operasi" HR di perusahaanmu?</h1>
+    <p class="lead">10 skenario nyata yang langsung kamu kenali — memetakan kematangan HR-mu di 5 komponen: Data, Proses, Agreement, Compliance, dan Intelligence.</p>
     <div class="meta">
-      <span class="chip">9 pertanyaan</span>
-      <span class="chip">~3 menit</span>
+      <span class="chip">10 skenario</span>
+      <span class="chip">~4 menit</span>
       <span class="chip">Hasil instan</span>
+      <span class="chip">5 layer diagnosis</span>
     </div>
     <button class="btn btn-primary btn-block" onclick="start()">Mulai assessment</button>
   </section>
 
-  <!-- ============ SCREEN: QUIZ ============ -->
+  <!-- ============ QUIZ ============ -->
   <section class="screen card" id="s-quiz">
     <div class="prog"><i id="progbar" style="width:0%"></i></div>
-    <span class="qcount" id="qcount">Pertanyaan 1 dari 9</span>
+    <span class="qcount" id="qcount"></span>
     <div class="qtext" id="qtext"></div>
     <div id="opts"></div>
     <div class="row">
@@ -159,12 +133,11 @@ h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;le
     </div>
   </section>
 
-  <!-- ============ SCREEN: FORM ============ -->
+  <!-- ============ FORM ============ -->
   <section class="screen card" id="s-form">
     <div class="eyebrow">Satu langkah lagi</div>
-    <h1 style="font-size:24px">Lihat hasil &amp; profil HR-mu</h1>
+    <h1 style="font-size:22px">Lihat HR OS Version & diagnosis layer-mu</h1>
     <p class="lead" style="margin-bottom:24px">Isi data singkat ini untuk membuka hasilmu.</p>
-
     <div class="grid2">
       <div class="field"><label>Nama <span class="req">*</span></label><input id="f-name" type="text" placeholder="Nama lengkap"></div>
       <div class="field"><label>Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="nama@perusahaan.com"></div>
@@ -185,30 +158,43 @@ h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;le
     <div class="field"><label>Sudah pakai e-signature? <span class="req">*</span></label>
       <select id="f-esign"><option value="">Pilih…</option><option>Sudah</option><option>Belum</option></select>
     </div>
-
-    <label class="consent" id="consent-wrap"><input type="checkbox" id="f-consent"><span>Saya bersedia dihubungi tim Smart Salary &amp; VIDA terkait hasil assessment dan informasi event.</span></label>
+    <label class="consent" id="consent-wrap"><input type="checkbox" id="f-consent"><span>Saya bersedia dihubungi tim Smart Salary & VIDA terkait hasil assessment dan informasi event.</span></label>
     <div class="errmsg" id="form-err"></div>
-
     <div class="row">
       <button class="btn btn-ghost" onclick="show('s-quiz')">← Kembali</button>
-      <button class="btn btn-primary" id="submitbtn" onclick="submitAssessment()">Lihat hasilku →</button>
+      <button class="btn btn-primary" onclick="submitAssessment()">Lihat hasilku →</button>
     </div>
   </section>
 
-  <!-- ============ SCREEN: RESULT (TEASER) ============ -->
+  <!-- ============ RESULT: BRIEF READOUT ============ -->
   <section class="screen card" id="s-result">
-    <div class="badge"><span id="r-emoji">●</span> Profil HR-mu</div>
-    <div class="profile-name" id="r-name">—</div>
-    <div class="profile-head" id="r-head"></div>
-    <div class="profile-desc" id="r-desc"></div>
+    <div class="version-badge" id="r-badge">HR OS 2.0</div>
+    <div class="version-name" id="r-version">Connected</div>
+    <div class="version-score" id="r-score"></div>
+    <div class="version-desc" id="r-desc"></div>
 
-    <div class="bars" id="r-bars"></div>
+    <div class="layers" id="r-layers"></div>
+
+    <div class="weakest" id="r-weakest">
+      <h3 id="r-weak-title"></h3>
+      <p id="r-weak-text"></p>
+    </div>
+
+    <div class="preview">
+      <h3>Apa isi full report-mu? 👀</h3>
+      <div class="preview-grid">
+        <div class="preview-item"><div class="pi-icon">📊</div><div class="pi-title">Benchmark position</div><div class="pi-desc">Posisi skormu dibanding perusahaan lain di Indonesia. Kamu di atas atau di bawah rata-rata?</div></div>
+        <div class="preview-item"><div class="pi-icon">🔍</div><div class="pi-title">Interpretasi tiap layer</div><div class="pi-desc">Apa arti skor tiap layer-mu secara praktis — apa dampaknya hari ini, dan apa yang berubah kalau diperbaiki.</div></div>
+        <div class="preview-item"><div class="pi-icon">🗺️</div><div class="pi-title">Roadmap ke stage berikut</div><div class="pi-desc">3 langkah prioritas, dalam urutan yang benar, untuk naik ke versi HR OS berikutnya.</div></div>
+        <div class="preview-item"><div class="pi-icon">🔧</div><div class="pi-title">Coverage map</div><div class="pi-desc">Fitur Smart Salary & VIDA mana yang menutup gap spesifikmu — dan seperti apa praktiknya.</div></div>
+      </div>
+    </div>
 
     <div class="gate">
-      <h3>Ini baru gambaran singkatnya 👀</h3>
-      <p>Analisa lengkap — rincian per dimensi, benchmark dengan perusahaan lain, dan rekomendasi langkah konkret — kami bahas langsung bareng kamu di event.</p>
-      <a class="btn btn-primary" id="r-cta" href="#" target="_blank" rel="noopener">Daftar event &amp; buka analisa lengkap</a>
-      <div class="lock">🔒 Hasil detail tersedia khusus untuk peserta event</div>
+      <h3>Full report-mu sudah menunggu di event</h3>
+      <p>Analisa lengkap per-layer, benchmark, roadmap, dan rekomendasi — semua dipersonalisasi berdasarkan jawabanmu.</p>
+      <a class="btn btn-primary" id="r-cta" href="#" target="_blank" rel="noopener">Daftar event & ambil full report →</a>
+      <div class="lock">🔒 Full report hanya tersedia untuk peserta event</div>
     </div>
 
     <div class="foot">Powered by Smart Salary × VIDA</div>
@@ -219,56 +205,122 @@ h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.15;le
 
 <script>
 /* ============================================================
-   ⚙️  CONFIG — ubah bagian ini kapan saja
+   CONFIG — ubah di sini kapan saja
    ============================================================ */
 const CONFIG = {
-  // Tempel URL Google Apps Script Web App di sini:
   APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzxSY-xoUAyCMvu2afpb9n-HgS5R8fGhI4xzIiuaDdGN91JEXiALHNSwGuuEgh8HnDX7w/exec",
-  // Tempel URL halaman pendaftaran event di sini:
-  EVENT_URL: "PASTE_EVENT_REGISTRATION_URL",
+  EVENT_URL: "https://smartsalary.sg.larksuite.com/share/base/form/shrlg0UDztGSpCRqBo1q4xNqnle",
 
-  // Ambang profil (persen rata-rata 3 dimensi)
-  HIGH: 75,   // ≥ ini  → Digital Pioneer
-  LOW: 35,    // ≤ ini  → Growth Starter
-
-  // Dimensi
-  DIMS: [
-    { key:"hris",     label:"HRIS & Payroll",    color:"#28b86a" },
-    { key:"ai",       label:"AI Readiness",      color:"#3c4ea2" },
-    { key:"security", label:"Security & e-Sign", color:"#5c616a" },
+  // 5 Layers
+  LAYERS: [
+    { key:"data",       label:"Data",        icon:"💾", color:"#3e63dd" },
+    { key:"process",    label:"Process",     icon:"⚙️", color:"#28b86a" },
+    { key:"agreement",  label:"Agreement",   icon:"🤝", color:"#e5a00d" },
+    { key:"compliance", label:"Compliance",  icon:"📋", color:"#12a594" },
+    { key:"intelligence",label:"Intelligence",icon:"🧠", color:"#3c4ea2" },
   ],
 
-  // 9 soal (3 per dimensi). Tiap opsi: [teks, poin 0–3]
-  QUESTIONS: [
-    { dim:"hris", text:"Bagaimana cara perusahaan kamu mengelola data karyawan & payroll saat ini?",
-      options:[["Manual — spreadsheet/kertas",0],["Beberapa tool terpisah, belum terhubung",1],["Satu sistem HRIS, tapi fitur terbatas",2],["HRIS + payroll terintegrasi penuh",3]] },
-    { dim:"hris", text:"Seberapa otomatis proses payroll bulanan kamu?",
-      options:[["Dihitung manual tiap bulan",0],["Dibantu tool, tapi masih banyak langkah manual",1],["Sebagian besar otomatis, sedikit penyesuaian",2],["Hampir sepenuhnya otomatis",3]] },
-    { dim:"hris", text:"Kalau karyawan butuh slip gaji atau mengajukan cuti, bagaimana caranya?",
-      options:[["Minta langsung ke HR",0],["HR kirimkan via email/chat",1],["Ada self-service, tapi terbatas",2],["Portal/app self-service lengkap",3]] },
-
-    { dim:"ai", text:"Kalau manajemen butuh laporan HR (tren resign, absensi, data cuti antar-departemen), bagaimana cara dapetnya?",
-      options:[["Tarik & olah manual dari berbagai sumber",0],["Ada laporan, tapi disiapkan manual tiap kali",1],["Ada dashboard, tapi belum bisa tanya bebas/ad-hoc",2],["Tinggal tanya pakai bahasa biasa, laporan langsung keluar",3]] },
-    { dim:"ai", text:"Bagaimana karyawan mengajukan & melacak cuti, lembur, atau approval?",
-      options:[["Manual/japri HR, status susah dilacak",0],["Lewat form, tapi isi & lacak masih ribet",1],["Sistem self-service standar",2],["Dipandu asisten percakapan: isi otomatis, cek saldo, lacak status",3]] },
-    { dim:"ai", text:"Untuk tugas berulang — pengumuman, surat/kontrak, JD, atau jawab pertanyaan kebijakan — bagaimana sekarang?",
-      options:[["Ditulis/dijawab manual dari nol tiap kali",0],["Pakai template lama yang diedit manual",1],["Sebagian dibantu tool, tapi terpisah-pisah",2],["Dibantu AI: generate draf + jawab dari knowledge base perusahaan",3]] },
-
-    { dim:"security", text:"Bagaimana cara perusahaan menandatangani dokumen HR (kontrak, surat)?",
-      options:[["Cetak — tanda tangan basah — scan",0],["Tempel gambar tanda tangan di PDF",1],["E-sign biasa",2],["E-sign tersertifikasi + verifikasi identitas",3]] },
-    { dim:"security", text:"Bagaimana kamu memverifikasi identitas karyawan/kandidat saat onboarding?",
-      options:[["Manual lihat dokumen fisik",0],["Kirim foto KTP via chat",1],["Form upload dokumen",2],["Verifikasi identitas digital / e-KYC",3]] },
-    { dim:"security", text:"Seberapa yakin kamu soal keamanan & kepatuhan data karyawan?",
-      options:[["Belum ada kebijakan khusus",0],["Ada, tapi seadanya",1],["Ada kebijakan + tool dasar",2],["Terstruktur & patuh regulasi (PDP/PDPA)",3]] },
+  // 4 OS Versions (score ranges out of 40)
+  VERSIONS: [
+    { key:"offline",     label:"Offline",     code:"1.0", min:10, max:17, color:"#e5484d",
+      desc:"HR operations-mu sebagian besar masih manual, terpisah-pisah, dan bergantung pada usaha individual. Data tersebar di spreadsheet, email, dan chat. Kerja strategis sangat jarang dilakukan." },
+    { key:"connected",   label:"Connected",   code:"2.0", min:18, max:25, color:"#e5a00d",
+      desc:"Fondasi sudah ada, tapi performanya belum konsisten. HRIS mungkin sudah dipakai, tapi kelengkapan data rendah. Beberapa proses sudah otomatis, yang lain masih manual." },
+    { key:"integrated",  label:"Integrated",  code:"3.0", min:26, max:33, color:"#12a594",
+      desc:"Sistem sudah saling terhubung. Data mengalir tanpa intervensi manual terus-menerus. Payroll dan proses inti sudah otomatis. Agreement sudah digital dan terlacak." },
+    { key:"intelligent", label:"Intelligent", code:"4.0", min:34, max:40, color:"#3e63dd",
+      desc:"HR beroperasi sebagai fungsi strategis. Pekerjaan operasional berjalan otomatis. AI membantu menyajikan insight dan mendeteksi risiko sebelum jadi masalah." },
   ],
 
-  // 4 profil
-  PROFILES: {
-    digital_pioneer:      { name:"Digital Pioneer",      emoji:"🚀", head:"Kamu sudah matang di semua lini.",        desc:"HR-mu digital, terintegrasi, dan siap AI. Langkah berikutnya: optimasi & inovasi berkelanjutan." },
-    operational_optimizer:{ name:"Operational Optimizer", emoji:"⚙️", head:"Fondasi operasional kuat — tinggal dorong AI.", desc:"Proses HR-mu rapi dan tertata, tapi pemanfaatan AI & otomasi cerdas masih bisa digenjot lebih jauh." },
-    ai_forward_thinker:   { name:"AI-Forward Thinker",    emoji:"✨", head:"Haus AI, infrastruktur menyusul.",          desc:"Kamu antusias mengadopsi AI; tinggal perkuat fondasi HRIS & keamanannya agar makin solid." },
-    growth_starter:       { name:"Growth Starter",        emoji:"🌱", head:"Awal perjalanan, potensi besar.",            desc:"Banyak proses masih manual — di sinilah peluang efisiensi & dampak paling besar menunggu." },
+  // Per-layer status labels (score out of 8)
+  STATUS: [
+    { min:2, max:3, label:"Critical Gap", color:"#e5484d", bg:"rgba(229,72,77,.10)" },
+    { min:4, max:5, label:"Improving",    color:"#e5a00d", bg:"rgba(229,160,13,.10)" },
+    { min:6, max:7, label:"Functional",   color:"#12a594", bg:"rgba(18,165,148,.10)" },
+    { min:8, max:8, label:"Optimised",    color:"#3e63dd", bg:"rgba(62,99,221,.10)" },
+  ],
+
+  // Weakest-layer diagnosis sentences
+  WEAKNESS: {
+    data:       "Data karyawan tersebar dan tidak lengkap — setiap laporan yang dihasilkan dari data ini mengandung ketidakpastian, dan keputusan yang diambil berdasarkan data ini berisiko.",
+    process:    "Proses operasional HR masih banyak yang manual — pengajuan cuti, lembur, dan reimbursement masih lewat chat atau email. Tim HR menghabiskan kapasitas besar untuk tugas yang seharusnya self-service.",
+    agreement:  "Kontrak dan dokumen onboarding masih berbasis kertas. Setiap siklus hiring kehilangan 3–5 hari untuk koordinasi manual, dan tidak ada audit trail digital jika terjadi sengketa.",
+    compliance: "Update regulasi masih diimplementasikan manual. Setiap siklus compliance menyisakan risiko error karena masih ada langkah manual yang belum diotomasi.",
+    intelligence:"Laporan HR masih membutuhkan jam kerja manual untuk kompilasi. Tidak ada dashboard real-time atau early warning — semua insight bersifat retrospektif.",
   },
+
+  // 10 skenario, 2 per layer, skor 1–4
+  QUESTIONS: [
+    // L1 Data
+    { layer:"data", text:"Tiba-tiba diminta data lengkap 50 karyawan dalam satu jam. Gimana situasinya?",
+      options:[
+        ["Buka sana-sini — folder, group chat, email lama. Semoga ketemu semua",1],
+        ["Buka spreadsheet utama, tapi harus dicek ulang satu-satu biar yakin",2],
+        ["Tarik dari sistem — hampir lengkap, tinggal konfirmasi beberapa ke departemen terkait",3],
+        ["10 menit selesai. Datanya sudah rapi dan siap pakai",4]] },
+    { layer:"data", text:"Lagi rapat, bos besar tiba-tiba tanya: \"Divisi mana yang paling banyak resign tahun ini?\" Kamu ada di ruangan.",
+      options:[
+        ["\"Saya cek dulu ya\" — lalu habiskan sisa hari buat nyari jawabannya",1],
+        ["Ada gambaran kasar, tapi angka pastinya butuh 2–3 jam ngolah data",2],
+        ["Bisa jawab dalam hitungan menit, tinggal buka beberapa tab",3],
+        ["Langsung jawab. Data ini selalu siap kapan pun ditanya",4]] },
+
+    // L2 Process
+    { layer:"process", text:"H-3 gajian. Suasana tim HR kayak gimana?",
+      options:[
+        ["Semua tegang. Excel terbuka di mana-mana, ada yang ngecek sampai tiga kali",1],
+        ["Sistem sudah jalan, tapi masih ada belasan item yang harus diinput dan diverifikasi manual",2],
+        ["Sistem sudah keluarin draft — tinggal review dan selesaikan beberapa anomali",3],
+        ["Sistem kirim ringkasan, HR tinggal klik approve. Selesai",4]] },
+    { layer:"process", text:"Ada karyawan WA jam 9 malam, mau izin cuti besok. Gimana kelanjutannya?",
+      options:[
+        ["WA ke atasan, atasan forward ke HR, HR catat — kadang kelewat",1],
+        ["Email ke atasan CC HR — tapi siapa yang approve dan di mana tercatatnya, suka nggak jelas",2],
+        ["Isi form digital, tapi proses approval dan update saldo cutinya belum nyambung",3],
+        ["Submit lewat app, atasan approve dari HP, saldo cuti langsung ke-update otomatis",4]] },
+
+    // L3 Agreement
+    { layer:"agreement", text:"Hari ini ada karyawan baru yang harus tanda tangan kontrak. Prosesnya gimana?",
+      options:[
+        ["Print, tanda tangan basah, scan, masukin ke folder. Klasik",1],
+        ["Kirim PDF lewat email, minta dia cetak-tanda tangan-scan-kirim balik. Semoga nggak hilang",2],
+        ["Sebagian udah pakai e-sign, tapi prosesnya belum seragam dan arsipnya susah dicari",3],
+        ["Kirim digital, tanda tangan elektronik, langsung terarsip dan bisa dicari kapan saja",4]] },
+    { layer:"agreement", text:"Dari kandidat bilang \"saya terima\" sampai semua dokumen onboarding beres — butuh berapa lama?",
+      options:[
+        ["Lebih dari seminggu. Bolak-balik, banyak yang harus diprint dan ditandatangani langsung",1],
+        ["3–5 hari. Sebagian digital, tapi selalu ada satu langkah yang harus tatap muka",2],
+        ["1–2 hari. Hampir semua lancar, tinggal satu-dua yang masih manual",3],
+        ["Hari itu juga selesai. Karyawan baru mulai tanpa dokumen yang menggantung",4]] },
+
+    // L4 Compliance
+    { layer:"compliance", text:"Akhir bulan, waktunya urus BPJS, PPh 21, dan THR. Gimana biasanya?",
+      options:[
+        ["Ada satu file Excel sakral yang nggak boleh disentuh sembarangan. Setiap bulan deg-degan",1],
+        ["Ada template-nya, tapi ngisi dan ngecek ulang tetap makan hampir seharian",2],
+        ["Sistem hitung sebagian besar — HR tinggal review dan adjust beberapa item",3],
+        ["Sistem jalan otomatis, flagging kalau ada yang aneh, laporan tinggal submit",4]] },
+    { layer:"compliance", text:"Pemerintah baru umumin UMP baru. Reaksi pertama tim?",
+      options:[
+        ["Tahu dari berita, terus kelabakan ngitung ulang semuanya dari awal",1],
+        ["Ada yang mantau, tapi proses update-nya sepenuhnya manual",2],
+        ["Udah ada prosedur, tapi implementasinya tetap butuh beberapa hari",3],
+        ["Dapat notifikasi dari sistem. Tinggal konfirmasi, langsung aktif",4]] },
+
+    // L5 Intelligence
+    { layer:"intelligence", text:"Jam 5 sore, atasan minta laporan HR buat presentasi besok pagi. Gimana?",
+      options:[
+        ["Siap-siap lembur. Malam ini bakal panjang",1],
+        ["Bisa selesai 2–3 jam, asal nggak ada kejutan data di tengah jalan",2],
+        ["Template-nya udah ada — tinggal update beberapa angka. Satu jam cukup",3],
+        ["Export dari dashboard, rapiin dikit, beres sebelum pulang",4]] },
+    { layer:"intelligence", text:"Jujur aja — minggu ini, berapa banyak waktu tim HR yang beneran dipakai buat kerja strategis?",
+      options:[
+        ["Hampir nggak ada. Habis buat hal-hal yang harusnya udah jalan sendiri",1],
+        ["Paling satu-dua hari. Sisanya kena operasional",2],
+        ["Kira-kira setengah-setengah. Ada progres, tapi admin masih makan porsi besar",3],
+        ["Lebih dari setengah. Tim udah beneran jadi strategic partner",4]] },
+  ],
 };
 
 /* ============================================================
@@ -286,56 +338,64 @@ function start(){ qi=0; renderQ(); show("s-quiz"); }
 
 function renderQ(){
   const q = CONFIG.QUESTIONS[qi];
-  document.getElementById("qcount").textContent = `Pertanyaan ${qi+1} dari ${CONFIG.QUESTIONS.length}`;
-  document.getElementById("progbar").style.width = ((qi)/CONFIG.QUESTIONS.length*100)+"%";
+  const layer = CONFIG.LAYERS.find(l=>l.key===q.layer);
+  document.getElementById("qcount").textContent = `${layer.icon} ${layer.label}  ·  Pertanyaan ${qi+1} dari ${CONFIG.QUESTIONS.length}`;
+  document.getElementById("progbar").style.width = (qi/CONFIG.QUESTIONS.length*100)+"%";
   document.getElementById("qtext").textContent = q.text;
-  document.getElementById("backbtn").style.visibility = qi===0 ? "hidden" : "visible";
-
+  document.getElementById("backbtn").style.visibility = qi===0?"hidden":"visible";
   const box = document.getElementById("opts");
   box.innerHTML = "";
   q.options.forEach((o,idx)=>{
     const b = document.createElement("button");
-    b.className = "opt" + (answers[qi]===idx ? " sel":"");
+    b.className = "opt" + (answers[qi]===idx?" sel":"");
     b.innerHTML = `<span class="dot"></span><span>${o[0]}</span>`;
-    b.style.animationDelay = (idx*0.04)+"s";
     b.onclick = ()=>{ answers[qi]=idx; nextQ(); };
     box.appendChild(b);
   });
 }
 function nextQ(){
   if(answers[qi]===null) return;
-  if(qi < CONFIG.QUESTIONS.length-1){ qi++; renderQ(); }
+  if(qi<CONFIG.QUESTIONS.length-1){ qi++; renderQ(); }
   else { document.getElementById("progbar").style.width="100%"; show("s-form"); }
 }
 function prevQ(){ if(qi>0){ qi--; renderQ(); } }
 
 /* ============================================================
-   SCORING (rule-based, no AI)
+   SCORING (rule-based)
    ============================================================ */
 function score(){
-  const sum = {}; CONFIG.DIMS.forEach(d=>sum[d.key]=0);
-  CONFIG.QUESTIONS.forEach((q,i)=>{ sum[q.dim] += q.options[answers[i]][1]; });
-  const pct = {};
-  CONFIG.DIMS.forEach(d=> pct[d.key] = Math.round(sum[d.key]/9*100) ); // 3 soal × max 3 = 9
-  const overall = Math.round((pct.hris+pct.ai+pct.security)/3);
+  const layerScores = {};
+  CONFIG.LAYERS.forEach(l=>layerScores[l.key]=0);
+  CONFIG.QUESTIONS.forEach((q,i)=>{ layerScores[q.layer] += q.options[answers[i]][1]; });
+  const total = Object.values(layerScores).reduce((a,b)=>a+b,0);
 
-  let key;
-  if(overall >= CONFIG.HIGH) key="digital_pioneer";
-  else if(overall <= CONFIG.LOW) key="growth_starter";
-  else if(pct.ai > pct.hris && pct.ai > pct.security) key="ai_forward_thinker";
-  else key="operational_optimizer";
+  // Determine OS version
+  let version = CONFIG.VERSIONS[0];
+  for(const v of CONFIG.VERSIONS){ if(total>=v.min && total<=v.max) version=v; }
+  if(total > CONFIG.VERSIONS[CONFIG.VERSIONS.length-1].max) version = CONFIG.VERSIONS[CONFIG.VERSIONS.length-1];
 
-  return { pct, overall, key };
+  // Per-layer status
+  const layerStatus = {};
+  CONFIG.LAYERS.forEach(l=>{
+    const s = layerScores[l.key];
+    let st = CONFIG.STATUS[0];
+    for(const x of CONFIG.STATUS){ if(s>=x.min && s<=x.max) st=x; }
+    layerStatus[l.key] = st;
+  });
+
+  // Weakest layer
+  let weakest = CONFIG.LAYERS[0].key;
+  let weakestScore = 99;
+  CONFIG.LAYERS.forEach(l=>{
+    if(layerScores[l.key] < weakestScore){ weakestScore=layerScores[l.key]; weakest=l.key; }
+  });
+
+  return { layerScores, total, version, layerStatus, weakest };
 }
 
 /* ============================================================
-   SUBMIT + RESULT
+   FORM VALIDATION
    ============================================================ */
-function getSource(){
-  const s = (new URLSearchParams(location.search).get("src")||"").toLowerCase();
-  return s==="event" ? "event" : "analisa";
-}
-
 function clearFormErrors(){
   document.querySelectorAll("#s-form .err").forEach(e=>e.classList.remove("err"));
   const fe=document.getElementById("form-err"); if(fe) fe.classList.remove("show");
@@ -353,59 +413,61 @@ function showFormError(msg){
 })();
 
 const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/* ============================================================
+   SUBMIT + RESULT
+   ============================================================ */
+function getSource(){
+  return (new URLSearchParams(location.search).get("src")||"analisa").toLowerCase();
+}
+
 function submitAssessment(){
   clearFormErrors();
-  const name = document.getElementById("f-name").value.trim();
-  const email = document.getElementById("f-email").value.trim();
-  const wa = document.getElementById("f-wa").value.trim();
-  const consent = document.getElementById("f-consent").checked;
+  const name=document.getElementById("f-name").value.trim();
+  const email=document.getElementById("f-email").value.trim();
+  const wa=document.getElementById("f-wa").value.trim();
+  const consent=document.getElementById("f-consent").checked;
 
-  const checks = [
-    ["f-name", !!name, null],
-    ["f-email", EMAIL_RE.test(email), email && !EMAIL_RE.test(email) ? "Format email belum benar (contoh: nama@perusahaan.com)." : null],
-    ["f-wa", wa.replace(/\D/g,"").length>=8, wa ? "Nomor WhatsApp belum valid (min. 8 digit)." : null],
-    ["f-role", !!document.getElementById("f-role").value.trim(), null],
-    ["f-company", !!document.getElementById("f-company").value.trim(), null],
-    ["f-size", !!document.getElementById("f-size").value, null],
-    ["f-hris", !!document.getElementById("f-hris").value, null],
-    ["f-esign", !!document.getElementById("f-esign").value, null],
+  const checks=[
+    ["f-name",!!name,null],
+    ["f-email",EMAIL_RE.test(email),email&&!EMAIL_RE.test(email)?"Format email belum benar (contoh: nama@perusahaan.com).":null],
+    ["f-wa",wa.replace(/\D/g,"").length>=8,wa?"Nomor WhatsApp belum valid (min. 8 digit).":null],
+    ["f-role",!!document.getElementById("f-role").value.trim(),null],
+    ["f-company",!!document.getElementById("f-company").value.trim(),null],
+    ["f-size",!!document.getElementById("f-size").value,null],
+    ["f-hris",!!document.getElementById("f-hris").value,null],
+    ["f-esign",!!document.getElementById("f-esign").value,null],
   ];
-  let firstErr=null, specificMsg="";
-  checks.forEach(([id,ok,m])=>{ if(!ok){ const el=document.getElementById(id); el.classList.add("err"); if(!firstErr) firstErr=el; if(m && !specificMsg) specificMsg=m; } });
-  if(!consent){ document.getElementById("consent-wrap").classList.add("err"); if(!firstErr) firstErr=document.getElementById("f-consent"); }
-  if(firstErr){
-    showFormError(specificMsg || ("Mohon lengkapi semua kolom" + (consent ? "" : " & centang persetujuan") + "."));
-    try{ firstErr.focus(); }catch(e){}
-    return;
-  }
+  let firstErr=null,specificMsg="";
+  checks.forEach(([id,ok,m])=>{if(!ok){const el=document.getElementById(id);el.classList.add("err");if(!firstErr)firstErr=el;if(m&&!specificMsg)specificMsg=m;}});
+  if(!consent){document.getElementById("consent-wrap").classList.add("err");if(!firstErr)firstErr=document.getElementById("f-consent");}
+  if(firstErr){showFormError(specificMsg||("Mohon lengkapi semua kolom"+(consent?"":" & centang persetujuan")+"."));try{firstErr.focus();}catch(e){}return;}
 
   const r = score();
   const payload = {
     timestamp: new Date().toISOString(),
     name, email,
-    whatsapp: document.getElementById("f-wa").value.trim(),
+    whatsapp: wa,
     company: document.getElementById("f-company").value.trim(),
     company_size: document.getElementById("f-size").value,
     role: document.getElementById("f-role").value.trim(),
     has_hris: document.getElementById("f-hris").value,
     has_esign: document.getElementById("f-esign").value,
-    consent: consent ? "Ya" : "",
+    consent: consent?"Ya":"",
     source: getSource(),
-    score_hris: r.pct.hris,
-    score_ai: r.pct.ai,
-    score_security: r.pct.security,
-    score_overall: r.overall,
-    profile: CONFIG.PROFILES[r.key].name,
+    score_data: r.layerScores.data,
+    score_process: r.layerScores.process,
+    score_agreement: r.layerScores.agreement,
+    score_compliance: r.layerScores.compliance,
+    score_intelligence: r.layerScores.intelligence,
+    score_total: r.total,
+    os_version: "HR OS "+r.version.code+" "+r.version.label,
+    weakest_layer: r.weakest,
     status: "assessment"
   };
 
-  // Fire-and-forget ke Apps Script (no-cors). Hasil tetap tampil walau gagal.
   if(CONFIG.APPS_SCRIPT_URL && !CONFIG.APPS_SCRIPT_URL.startsWith("PASTE")){
-    fetch(CONFIG.APPS_SCRIPT_URL, {
-      method:"POST", mode:"no-cors",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body: JSON.stringify(payload)
-    }).catch(()=>{});
+    fetch(CONFIG.APPS_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(()=>{});
   }
 
   renderResult(r);
@@ -413,24 +475,39 @@ function submitAssessment(){
 }
 
 function renderResult(r){
-  const p = CONFIG.PROFILES[r.key];
-  document.getElementById("r-emoji").textContent = p.emoji;
-  document.getElementById("r-name").textContent = p.name;
-  document.getElementById("r-head").textContent = p.head;
-  document.getElementById("r-desc").textContent = p.desc;
+  const v = r.version;
+  document.getElementById("r-badge").textContent = "HR OS "+v.code;
+  document.getElementById("r-badge").style.background = v.color;
+  document.getElementById("r-version").textContent = v.label;
+  document.getElementById("r-score").textContent = `Skor: ${r.total} / 40`;
+  document.getElementById("r-desc").textContent = v.desc;
 
-  const bars = document.getElementById("r-bars");
-  bars.innerHTML = "";
-  CONFIG.DIMS.forEach(d=>{
-    const v = r.pct[d.key];
+  // Layer bars
+  const container = document.getElementById("r-layers");
+  container.innerHTML = "";
+  CONFIG.LAYERS.forEach(l=>{
+    const s = r.layerScores[l.key];
+    const st = r.layerStatus[l.key];
+    const pct = Math.round(s/8*100);
     const el = document.createElement("div");
-    el.className = "bar";
-    el.innerHTML = `<div class="top"><span>${d.label}</span><span>${v}%</span></div>
-                    <div class="track"><div class="fill" style="background:${d.color}"></div></div>`;
-    bars.appendChild(el);
-    requestAnimationFrame(()=> setTimeout(()=>{ el.querySelector(".fill").style.width = v+"%"; }, 120));
+    el.className = "layer";
+    el.innerHTML = `
+      <div class="top">
+        <span class="lname">${l.icon} ${l.label}</span>
+        <span class="lstatus" style="color:${st.color};background:${st.bg}">${st.label}</span>
+      </div>
+      <div class="track"><div class="fill" style="background:${l.color}"></div></div>
+      <div class="lscore">${s} / 8</div>`;
+    container.appendChild(el);
+    requestAnimationFrame(()=>setTimeout(()=>{el.querySelector(".fill").style.width=pct+"%";},120));
   });
 
+  // Weakest layer
+  const weakLayer = CONFIG.LAYERS.find(l=>l.key===r.weakest);
+  document.getElementById("r-weak-title").textContent = `Layer terlemah: ${weakLayer.icon} ${weakLayer.label} (${r.layerScores[r.weakest]}/8)`;
+  document.getElementById("r-weak-text").textContent = CONFIG.WEAKNESS[r.weakest];
+
+  // CTA
   const cta = document.getElementById("r-cta");
   cta.href = (CONFIG.EVENT_URL && !CONFIG.EVENT_URL.startsWith("PASTE")) ? CONFIG.EVENT_URL : "#";
 }
