@@ -218,11 +218,32 @@ h2{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2;let
     </div>
     <div class="gate">
       <h3>Full report-mu menunggu di event</h3>
-      <p>Analisa lengkap per-komponen, benchmark, roadmap, dan rekomendasi — semuanya personal berdasarkan jawabanmu.</p>
-      <a class="btn btn-primary" id="r-cta" href="https://smartsalary.sg.larksuite.com/share/base/form/shrlg0UDztGSpCRqBo1q4xNqnle" target="_blank" rel="noopener">Daftar event &amp; ambil full report &rarr;</a>
+      <p>Analisa lengkap per-komponen, benchmark, roadmap, dan rekomendasi yang akan dibahas langsung di HR Smart Connect.</p>
+      <button class="btn btn-primary" id="r-cta" onclick="registerEvent()">Daftar HR Smart Connect &rarr;</button>
       <div class="lock">Hasil detail khusus untuk peserta event</div>
     </div>
     <div class="foot">Powered by Smart Salary &times; VIDA</div>
+  </section>
+
+  <!-- ============ CONFIRMED ============ -->
+  <section class="screen card" id="s-confirmed">
+    <div style="text-align:center;padding:20px 0 10px">
+      <div style="width:72px;height:72px;border-radius:50%;background:rgba(40,184,106,.12);display:inline-grid;place-items:center;font-size:36px;margin-bottom:16px">&#10003;</div>
+      <h1 style="font-size:26px;margin-bottom:8px">Submitted!</h1>
+      <p class="lead" style="text-align:center;margin:0 auto 28px;max-width:44ch">Terima kasih sudah mendaftar. Dikarenakan tempat terbatas, peserta yang terkonfirmasi akan menerima undangan lanjutan via email/WhatsApp.</p>
+    </div>
+
+    <div style="background:#f9fbfa;border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center">
+      <div class="eyebrow" style="margin-bottom:12px">See you at the event</div>
+      <h2 style="font-size:18px;margin-bottom:12px">The HR Operations Gap: Where Does Your Company Stand?</h2>
+      <p style="font-size:14px;color:var(--grey);line-height:1.6;margin:0">
+        Jumat, 17 Juli 2026<br>
+        18.00 &ndash; 22.00 WIB<br>
+        Kopitagram Centang Biru, Kuningan
+      </p>
+    </div>
+
+    <div class="foot" style="margin-top:24px">Powered by Smart Salary &times; VIDA</div>
   </section>
 
 </div>
@@ -480,6 +501,23 @@ function submitAssessment(){
   }
   renderResult(r);
   show("s-result");
+}
+
+function registerEvent(){
+  var btn=document.getElementById("r-cta");
+  if(btn){ btn.textContent="Mendaftar..."; btn.disabled=true; }
+
+  // Update status to registered in Sheet (fire-and-forget)
+  var payload={
+    email: document.getElementById("f-email").value.trim(),
+    status: "registered"
+  };
+  if(CONFIG.APPS_SCRIPT_URL){
+    fetch(CONFIG.APPS_SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(function(){});
+  }
+
+  // Show confirmed screen after brief delay
+  setTimeout(function(){ show("s-confirmed"); },600);
 }
 
 function renderResult(r){
