@@ -262,13 +262,13 @@ var CONFIG = {
   ],
 
   VERSIONS: [
-    { key:"offline",  label:"Offline",     min:10, max:17, color:"#e5484d",
+    { key:"offline",  label:"Offline",     min:14, max:26, color:"#e5484d",
       desc:"Sebagian besar operasi HR masih manual dan terpisah-pisah. Data tersebar, proses bergantung pada usaha individu, dan kapasitas untuk kerja strategis sangat terbatas." },
-    { key:"connected", label:"Connected",   min:18, max:25, color:"#e5a00d",
+    { key:"connected", label:"Connected",   min:27, max:37, color:"#e5a00d",
       desc:"Fondasi sudah mulai terbentuk, tapi performanya belum konsisten. Ada sistem, tapi kelengkapan data dan otomasi masih setengah jalan." },
-    { key:"integrated", label:"Integrated", min:26, max:33, color:"#12a594",
+    { key:"integrated", label:"Integrated", min:38, max:45, color:"#12a594",
       desc:"Sistem sudah saling terhubung dan data mengalir lebih lancar. Proses inti mulai otomatis, dan tim HR punya ruang untuk kerja yang lebih strategis." },
-    { key:"intelligent", label:"Intelligent", min:34, max:40, color:"#3e63dd",
+    { key:"intelligent", label:"Intelligent", min:46, max:51, color:"#3e63dd",
       desc:"HR beroperasi sebagai fungsi strategis. Operasional berjalan otomatis, dan keputusan didukung data serta insight real-time." },
   ],
 
@@ -314,6 +314,18 @@ var CONFIG = {
         ["Isi form digital, tapi proses approval dan update saldo cutinya belum nyambung",3],
         ["Submit lewat app, atasan approve dari HP, saldo cuti langsung ke-update otomatis",4]] },
 
+    { layer:"agreement", text:"Bos lagi di luar kota dan ada kontrak yang harus ditandatangani hari ini juga. Apa yang terjadi?",
+      options:[
+        ["Nunggu beliau balik kantor \u2014 kontrak pending dulu",0],
+        ["Print, foto, kirim WA, minta tanda tangan manual, foto balik lagi",1],
+        ["Dokumen dikirim digital, tapi tanda tangannya masih tempel gambar signature di PDF",2],
+        ["Kirim link, beliau tanda tangan dari HP, identitas terverifikasi otomatis",3]] },
+    { layer:"agreement", text:"Ada kandidat dari kota lain atau luar negeri yang mau di-hire. Gimana cara pastiin identitasnya valid?",
+      options:[
+        ["Nggak ada cara khusus \u2014 percaya dari CV dan video call aja",0],
+        ["Minta foto KTP atau paspor dikirim lewat chat",1],
+        ["Minta upload dokumen lewat form, lalu dicek manual sama tim HR",2],
+        ["Verifikasi identitas digital (e-KYC) \u2014 tervalidasi otomatis tanpa harus tatap muka",3]] },
     { layer:"agreement", text:"Hari ini ada karyawan baru yang harus tanda tangan kontrak. Prosesnya gimana?",
       options:[
         ["Print, tanda tangan basah, scan, masukin ke folder. Klasik",1],
@@ -327,6 +339,18 @@ var CONFIG = {
         ["1\u20132 hari. Hampir semua lancar, tinggal satu-dua yang masih manual",3],
         ["Hari itu juga selesai. Karyawan baru mulai tanpa dokumen yang menggantung",4]] },
 
+    { layer:"compliance", text:"Dokumen yang butuh tanda tangan dari HR, Manager, sampai Direksi \u2014 bagaimana prosesnya sekarang?",
+      options:[
+        ["Dokumen fisik bolak-balik antar meja, nunggu satu per satu",0],
+        ["Kirim PDF ke tiap orang via email atau WA, diikutin urutannya secara manual",1],
+        ["Sudah pakai e-signature, tapi urutan approval-nya masih dipantau manual",2],
+        ["Approval flow digital end-to-end \u2014 semua pihak bisa tanda tangan dari mana saja, tercatat otomatis",3]] },
+    { layer:"compliance", text:"Kalau ada audit atau sengketa soal keabsahan dokumen, seberapa yakin dokumen HR-mu kuat secara hukum?",
+      options:[
+        ["Nggak yakin sama sekali \u2014 selama ini cuma tanda tangan basah yang discan",0],
+        ["Agak khawatir \u2014 itu cuma gambar signature yang ditempel, bukan tanda tangan yang terverifikasi",1],
+        ["Cukup yakin \u2014 sudah pakai e-signature standar",2],
+        ["Sangat yakin \u2014 tersertifikasi dan ada jejak verifikasi identitas yang sah secara hukum",3]] },
     { layer:"compliance", text:"Akhir bulan, waktunya urus BPJS, PPh 21, dan THR. Gimana biasanya?",
       options:[
         ["Ada satu file Excel sakral yang nggak boleh disentuh sembarangan. Setiap bulan deg-degan",1],
@@ -525,7 +549,7 @@ function renderResult(r){
   document.getElementById("r-badge").textContent=v.label;
   document.getElementById("r-badge").style.background=v.color;
   document.getElementById("r-version").textContent=v.label;
-  document.getElementById("r-score").textContent="Skor: "+r.total+" / 40";
+  document.getElementById("r-score").textContent="Skor: "+r.total+" / 51";
   document.getElementById("r-desc").textContent=v.desc;
 
   var container=document.getElementById("r-layers");
@@ -534,7 +558,8 @@ function renderResult(r){
     var l=CONFIG.LAYERS[i];
     var s=r.layerScores[l.key];
     var st=r.layerStatus[l.key];
-    var pct=Math.round(s/8*100);
+    var maxByLayer={data:9,process:9,agreement:12,compliance:12,intelligence:9};
+    var pct=Math.round(s/maxByLayer[l.key]*100);
     var el=document.createElement("div");
     el.className="layer";
     el.innerHTML='<div class="top"><span class="lname">'+l.icon+" "+l.label+'</span><span class="lstatus" style="color:'+st.color+";background:"+st.bg+'">'+st.label+'</span></div><div class="track"><div class="fill" style="background:'+l.color+'"></div></div><div class="lscore">'+s+" / 8</div>";
@@ -544,7 +569,8 @@ function renderResult(r){
 
   var weakLayer=null;
   for(var i=0;i<CONFIG.LAYERS.length;i++){if(CONFIG.LAYERS[i].key===r.weakest){weakLayer=CONFIG.LAYERS[i];break;}}
-  document.getElementById("r-weak-title").textContent="Komponen terlemah: "+weakLayer.icon+" "+weakLayer.label+" ("+r.layerScores[r.weakest]+"/8)";
+  var wMax={data:9,process:9,agreement:12,compliance:12,intelligence:9};
+  document.getElementById("r-weak-title").textContent="Komponen terlemah: "+weakLayer.icon+" "+weakLayer.label+" ("+r.layerScores[r.weakest]+"/"+wMax[r.weakest]+")";
   document.getElementById("r-weak-text").textContent=CONFIG.WEAKNESS[r.weakest];
 }
 </script>
